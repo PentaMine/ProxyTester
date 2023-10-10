@@ -5,8 +5,8 @@ import {configDotenv} from "dotenv";
 
 configDotenv()
 
-const httpPort = process.env.HTTP_PORT
-const httpsPort = process.env.HTTPS_PORT
+const httpPort = Number(process.env.HTTP_PORT)
+const httpsPort = Number(process.env.HTTPS_PORT)
 
 const server: Express = express();
 const httpsServer = https.createServer(
@@ -21,10 +21,10 @@ server.get("/", (req: Request, res: Response) => {
     res.json({secure: req.secure, headers: req.headers})
 })
 
-server.listen(httpPort, () => {
-    console.log(`HTTP server up at http://localhost:${httpPort}`);
+server.listen(httpPort, "0.0.0.0", () => {
+    console.log(`HTTP server up at http://0.0.0.0:${httpPort}`);
 });
 
-httpsServer.listen(httpsPort, () => {
-    console.log(`HTTPS server up at https://localhost:${httpsPort}`);
+httpsServer.listen(httpsPort, "0.0.0.0", () => {
+    console.log(`HTTPS server up at https://0.0.0.0:${httpsPort}`);
 });
