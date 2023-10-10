@@ -17,9 +17,9 @@ server.get("/", (req: Request, res: Response) => {
 
 
 httpsServer.listen(443, () => {
-    console.log(`⚡️[server]: Server is running at https://localhost:${443}`);
+    console.log(`HTTPS server up at https://localhost:${443}`);
 });
 
 server.listen(80, () => {
-    console.log(`⚡️[server]: Server is running at http://localhost:${80}`);
+    console.log(`HTTP server up at http://localhost:${80}`);
 });
